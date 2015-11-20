@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for fortune in fortunes %}
+        <div class="jumbotron">
+       {{ include('default/fortune.html.twig') }}
+        </div>
+        {% endfor %}
+        <div class="pagerfanta">
+
+        </div>
+{% endblock %}

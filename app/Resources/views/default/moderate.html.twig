@@ -1,0 +1,9 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Moderation des quotes</h1>
+	{% for fortune in fortunes %}
+	       <div class="">{{ include('default/fortune.html.twig') }}</div>
+	{% endfor %}
+{% endblock %}

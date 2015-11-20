@@ -1,0 +1,10 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h1>La meilleure Punchline</h1>
+{% for fortune in fortunes %}
+	<div class="div_quote">{{ include('default/fortune.html.twig') }}</div>
+{% endfor %}
+{% endblock %}
+

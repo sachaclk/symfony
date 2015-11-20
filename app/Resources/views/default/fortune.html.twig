@@ -1,0 +1,25 @@
+
+<div class="div_quote">
+	<ul>
+		<h2><a href="{{path("quote",{id: fortune.id})}}">Titre: {{ fortune.title }}</h2>
+
+		<h4><a href="{{path("author",{author: fortune.author})}}">Auteur: {{ fortune.author }}</a></h4>
+		<h1>" {{ fortune.content }} "</h1>
+		<h5>Publiée le: {{ fortune.createdAt|date('d/m/y') }}</h5>
+		{% if attribute(session, 'votedUp' ~ fortune.id) is defined %}
+			<li><a href="{{path("vote_up",{id: fortune.id})}}">👍 <strong>{{ fortune.upVote}}</strong></a> tu as déjà voté</li>
+		{% else %}
+			<li><a href="{{path("vote_up",{id: fortune.id})}}">👍 {{ fortune.upVote}}</a></li>
+		{% endif %}
+		{% if attribute(session, 'votedDown' ~ fortune.id) is defined %}
+			<li><a href="{{path("vote_down",{id: fortune.id})}}">👎 <strong>{{ fortune.downVote}}</strong></a> tu as déjà voté</li>
+		{% else %}
+			<li><a href="{{path("vote_down",{id: fortune.id})}}">👎 {{ fortune.downVote}}</a></li>
+		{% endif %}
+		{% if fortune.getPublished() == false %}
+			<p><a href="{{path("validate",{id: fortune.id})}}">• Accepter la quote</a></p>
+		{% endif %}
+		<p><a href="{{path("edit_quote",{id: fortune.id})}}">• Editer la quote</a></p>
+	</ul>
+
+</div>
